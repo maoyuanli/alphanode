@@ -6,11 +6,10 @@ const memberRouter = require('./member-component/member-routers');
 
 const app = express();
 app.use(express.json());
-app.use(morgan('dev'));
+if(process.env.NODE_ENV === 'development'){app.use(morgan('dev'))}
+
 app.use('/api/packages', packageRouter.packageRouter);
 app.use('/api/members', memberRouter.memberRouter);
 
-const port = 3000;
-app.listen(port, () => {
-    console.log(`app running on : http://localhost:${port}`)
-});
+
+module.exports= {app};

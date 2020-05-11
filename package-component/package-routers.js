@@ -1,9 +1,13 @@
 const express = require('express');
-const {getAllPackages ,findPackageById, postSomething} = require('./package-services');
+const {getAllPackages, findPackageById, postSomething, checkID, checkPostBody} = require('./package-services');
 
 
 const packageRouter = express.Router();
-packageRouter.route('/').get(getAllPackages).post(postSomething);
-packageRouter.route('/:id').get(findPackageById);
+packageRouter.param('id', checkID);
+packageRouter.route('/')
+    .get(getAllPackages)
+    .post(checkPostBody, postSomething);
+packageRouter.route('/:id')
+    .get(findPackageById);
 
 module.exports = {packageRouter};
