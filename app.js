@@ -1,15 +1,16 @@
 const express = require('express');
-const fs = require('fs');
 const morgan = require('morgan');
-const membershipRouter = require('./routers/membership-routers');
-const memberRouter = require('./routers/member-routers');
+const {membershipRouter} = require('./routers/membership-routers');
+const {programRouter} = require('./routers/program-routers');
+
 
 const app = express();
 app.use(express.json());
-if(process.env.NODE_ENV === 'development'){app.use(morgan('dev'))}
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+}
 
-app.use('/api/membership', membershipRouter.membershipRouter);
-app.use('/api/member', memberRouter.memberRouter);
+app.use('/api/membership', membershipRouter);
+app.use('/api/program', programRouter);
 
-
-module.exports= {app};
+module.exports = {app};

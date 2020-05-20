@@ -1,42 +1,25 @@
-const fs = require('fs');
-const path = require('path');
-const Membership = require('../models/membership-model');
+const {Membership} = require('../models/membership-model');
 
-const fileLoc = path.join(__dirname, '..', 'dev-data', 'data', 'tours-simple.json');
-const tours = JSON.parse(fs.readFileSync(fileLoc));
 
-const getAllMembership = (req, res) => {
-    res.status(200).json(tours)
-};
+const applyMembership = async (req, res) => {
+    try {
+        const membershipApplication = await Membership.create(req.body);
 
-const findMembershipById = (req, res) => {
-    let id = Number(req.params.id);
-    let filtered = tours.filter(t => t.id === id);
-    res.status(200).json(filtered);
-};
-
-const postSomething = (req, res) => {
-    res.status(201).json({status: 'post received', postContent: req.body})
-};
-
-const checkID = (req, res, next, val) => {
-    if (Number(req.params.id) > tours.length) {
-        return res.status(404).json(
+        res.status(201).json({
+            status: 'application received',
+            data: {
+                membership: membershipApplication
+            }
+        })
+    } catch (err) {
+        res.status(400).json(
             {
-                message: 'Invalid ID'
+                status: 'application failed',
+                message: err
             }
         )
     }
-    next();
 };
 
-const checkPostBody = (req, res, next) => {
-    if (typeof req.body.id === 'undefined' || typeof req.body.name === 'undefined') {
-        return res.status(400).json(
-            {message: 'missing id or name'}
-        )
-    }
-    next();
-};
 
-module.exports = {getAllMembership, findMembershipById, postSomething, checkID, checkPostBody};
+module.exports = {applyMembership};

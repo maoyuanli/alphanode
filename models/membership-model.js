@@ -1,31 +1,13 @@
 const mongoose = require('mongoose');
 
 const membershipSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    rating: Number,
-    price: {
-        type: Number,
-        required: true
-    },
-    summary: String
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
+    phone: {type: Number, required: true},
+    email: {type: String, required: true},
+    program: {type: String, required: true},
 });
 
 const Membership = mongoose.model('Membership', membershipSchema);
-
-const mbs = new Membership({
-    name: 'Basic',
-    rating: 4.7,
-    price: 980,
-    summary: 'a basic package'
-});
-
-mbs.save().then((doc) => {
-    console.log(doc)
-}).catch((err) => {
-    console.log(err)
-});
 
 module.exports = {Membership};
