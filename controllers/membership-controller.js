@@ -1,14 +1,15 @@
 const fs = require('fs');
 const path = require('path');
+const Membership = require('../models/membership-model');
 
 const fileLoc = path.join(__dirname, '..', 'dev-data', 'data', 'tours-simple.json');
 const tours = JSON.parse(fs.readFileSync(fileLoc));
 
-const getAllPackages = (req, res) => {
+const getAllMembership = (req, res) => {
     res.status(200).json(tours)
 };
 
-const findPackageById = (req, res) => {
+const findMembershipById = (req, res) => {
     let id = Number(req.params.id);
     let filtered = tours.filter(t => t.id === id);
     res.status(200).json(filtered);
@@ -38,4 +39,4 @@ const checkPostBody = (req, res, next) => {
     next();
 };
 
-module.exports = {getAllPackages, findPackageById, postSomething, checkID, checkPostBody};
+module.exports = {getAllMembership, findMembershipById, postSomething, checkID, checkPostBody};

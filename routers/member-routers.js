@@ -1,5 +1,5 @@
 const express = require('express');
-const {getAllMembers, findMemberByName} = require('./member-services');
+const {getAllMembers, findMemberByName} = require('../controllers/member-controller');
 
 
 const memberRouter = express.Router();
