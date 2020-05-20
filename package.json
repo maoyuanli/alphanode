@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "start:dev": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js"
   },
@@ -15,5 +16,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.13",
     "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": "12.14.1"
   }
 }
