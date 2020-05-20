@@ -1,9 +1,9 @@
 const express = require('express');
-const {createProgram} = require('../controllers/program-controller');
+const {createProgram, getAllPrograms} = require('../controllers/program-controller');
 
 
 const programRouter = express.Router();
 
-programRouter.route('/').post(createProgram);
+programRouter.route('/').post(createProgram).get(getAllPrograms);
 
 module.exports = {programRouter};

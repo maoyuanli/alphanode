@@ -1,5 +1,22 @@
 const {Program} = require('../models/program-model');
 
+const getAllPrograms = async (req, res) => {
+    try {
+        const progs = await Program.find();
+        res.status(200).json({
+            status: 'success',
+            data: {
+                programs: progs
+            }
+        })
+    } catch (e) {
+        res.status(400).json({
+            status: 'not found',
+            message: e
+        })
+    }
+};
+
 const createProgram = async (req, res) => {
     try {
         const progCreated = await Program.create(req.body);
@@ -17,4 +34,5 @@ const createProgram = async (req, res) => {
     }
 };
 
-module.exports = {createProgram}
+
+module.exports = {createProgram, getAllPrograms};
