@@ -1,7 +1,14 @@
-const config = require('../utils/keys');
+const config = require('../config/keys');
 const dialogflow = require('dialogflow');
-const sessionClient = new dialogflow.SessionsClient();
+
+const projectID = config.gootleProjectID;
+const credentials = {
+    client_email: config.googleClientEmail,
+    private_key: config.googlePrivateKey
+};
+const sessionClient = new dialogflow.SessionsClient({projectID, credentials});
 const sessionPath = sessionClient.sessionPath(config.gootleProjectID, config.dialogFlowSessionID);
+
 
 const handleTextQuery = async (req, res) => {
     const request = {
@@ -19,4 +26,20 @@ const handleTextQuery = async (req, res) => {
     res.send(responses[0].queryResult);
 };
 
-module.exports = {handleTextQuery};
+const handleEventQuery = async (event, res) => {
+    const request = {
+        session: sessionPath,
+        queryInput: {
+            event: {
+                // The query to send to the dialogflow agent
+                name: event,
+                // The language used by the client (en-US)
+                languageCode: config.dialogFlowSessionLanguageCode,
+            },
+        },
+    };
+    const responses = await sessionClient.detectIntent(request);
+    res.send(responses[0].queryResult);
+};
+
+module.exports = {handleTextQuery, handleEventQuery};
