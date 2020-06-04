@@ -40,11 +40,11 @@ const deleteProgs = async () => {
 
 const arg = process.argv[2];
 
-if(arg === '--import'){
+if (arg === '--import') {
     importProgs()
-}else if(arg === '--delete'){
+} else if (arg === '--delete') {
     deleteProgs()
-}else {
+} else {
     console.log('please provide arg like --import or --delete')
 }
 
