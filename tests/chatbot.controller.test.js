@@ -12,7 +12,7 @@ describe('chatbot controller handleTextQuery', () => {
             text: 'hi'
         };
         await handleTextQuery(req, res);
-        dfResponse = res._getJSONData();
+        dfResponse = res._getData();
         expect(dfResponse.fulfillmentText.length).toBeGreaterThan(0);
         expect(dfResponse.allRequiredParamsPresent).toBe(true);
         expect(dfResponse.queryText).toBe('hi');
