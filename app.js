@@ -1,9 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
-const {membershipRouter} = require('./routers/membership-routers');
-const {programRouter} = require('./routers/program-routers');
-const {chatbotRouter} = require('./routers/chatbot-routers');
-const {skillRouter} = require('./routers/skill-routers');
+const {membershipRouter} = require('./routers/membership.routers');
+const {programRouter} = require('./routers/program.routers');
+const {chatbotRouter} = require('./routers/chatbot.routers');
+const {skillRouter} = require('./routers/skill.routers');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 

@@ -1,9 +1,9 @@
-const {Skill} = require('../models/skill-model');
+const {Skill} = require('../models/skill.model');
 
 const addSkill = async (req, res) => {
     try {
         const skillAdded = await Skill.create(req.body);
-        res.status(201).json({
+        res.status(200).json({
             status: 'skill added',
             data: {
                 skill: skillAdded
@@ -44,7 +44,7 @@ const updateSkill = async (req, res) => {
         const options = {new: true, upsert: true, runValidators: true};
         const skillUpdated = await Skill.findOneAndUpdate(
             filter, update, options
-        )
+        );
         res.status(200).json({
             status: 'success',
             data: {

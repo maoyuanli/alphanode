@@ -1,5 +1,5 @@
 const express = require('express');
-const {addSkill, findSkillByName, updateSkill} = require('../controllers/skill-controller');
+const {addSkill, findSkillByName, updateSkill} = require('../controllers/skill.controller');
 
 const skillRouter = express.Router();
 

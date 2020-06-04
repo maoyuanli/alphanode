@@ -1,5 +1,5 @@
 const express = require('express');
-const {handleTextQuery} = require("../controllers/chatbot-controller");
+const {handleTextQuery} = require("../controllers/chatbot.controller");
 
 
 
