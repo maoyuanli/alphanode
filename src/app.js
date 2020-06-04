@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
-
+app.options('*', cors());
 app.use('/api/membership', membershipRouter);
 app.use('/api/program', programRouter);
 app.use('/api/chatbot', chatbotRouter);

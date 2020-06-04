@@ -27,14 +27,16 @@ const initSkills = async () => {
                 filter, update, options
             )
         }
-        process.exit();
+
     } catch (e) {
         console.log(e);
     }
 };
 
 
-initSkills().then(r => console.log('skills initialized'));
+initSkills().then(r => {
+    console.log('skills initialized');
+});
 
 module.exports = {initSkills};
 
