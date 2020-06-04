@@ -59,4 +59,22 @@ const updateSkill = async (req, res) => {
     }
 };
 
-module.exports = {addSkill, findSkillByName, updateSkill};
+const getAllSkills = async (req, res) => {
+    try {
+
+        const skills = await Skill.find();
+        res.status(200).json({
+            status: 'success',
+            data: {
+                skills
+            }
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: 'not found',
+            message: err
+        })
+    }
+};
+
+module.exports = {addSkill, findSkillByName, updateSkill, getAllSkills};

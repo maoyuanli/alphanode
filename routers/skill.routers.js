@@ -1,5 +1,5 @@
 const express = require('express');
-const {addSkill, findSkillByName, updateSkill} = require('../controllers/skill.controller');
+const {addSkill, findSkillByName, updateSkill, getAllSkills} = require('../controllers/skill.controller');
 
 const skillRouter = express.Router();
 
@@ -12,5 +12,7 @@ skillRouter.route('/find/:name')
 skillRouter.route('/update')
     .patch(updateSkill);
 
+skillRouter.route('/getall')
+    .get(getAllSkills);
 
 module.exports = {skillRouter};

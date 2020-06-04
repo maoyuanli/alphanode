@@ -4,6 +4,7 @@ const {membershipRouter} = require('./routers/membership.routers');
 const {programRouter} = require('./routers/program.routers');
 const {chatbotRouter} = require('./routers/chatbot.routers');
 const {skillRouter} = require('./routers/skill.routers');
+const {initSkills} = require('./utils/init.skills.data');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
@@ -20,5 +21,7 @@ app.use('/api/membership', membershipRouter);
 app.use('/api/program', programRouter);
 app.use('/api/chatbot', chatbotRouter);
 app.use('/api/skill', skillRouter);
+
+initSkills();
 
 module.exports = {app};
