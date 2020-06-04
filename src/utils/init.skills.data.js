@@ -27,6 +27,7 @@ const initSkills = async () => {
                 filter, update, options
             )
         }
+        process.exit();
     } catch (e) {
         console.log(e);
     }
