@@ -1,6 +1,8 @@
-const {updateSkill} = require('../controllers/skill.controller');
+const {updateSkill, getAllSkills} = require('../controllers/skill.controller');
 const {Skill} = require('../models/skill.model');
 const httpMocks = require('node-mocks-http');
+const {app} = require('../app');
+const request = require('supertest');
 
 Skill.findOneAndUpdate = jest.fn();
 
@@ -51,3 +53,15 @@ describe('skillController.updateSkill', () => {
     })
 });
 
+describe('skillController.getAllSkills', () => {
+    jest.setTimeout(30000); // 30 seconds
+    it('should return init skills', async () => {
+        const response = await request(app).get('/api/skill/getall');
+        expect(response.statusCode).toBe(200);
+        expect(response.body.data.skills.length).toBeGreaterThan(6);
+        const skillNames = response.body.data.skills.map(skill => skill.skillName);
+        expect(skillNames).toContain('java');
+        expect(skillNames).toContain('javascript');
+        expect(skillNames).toContain('python')
+    })
+});
