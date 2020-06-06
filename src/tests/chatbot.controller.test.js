@@ -1,4 +1,4 @@
-const {handleTextQuery} = require('../controllers/chatbot.controller');
+const {handleTextQuery} = require('../../dist/controllers/chatbot.controller');
 const httpMocks = require('node-mocks-http');
 
 beforeEach(() => {

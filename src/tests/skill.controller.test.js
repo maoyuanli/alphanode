@@ -1,7 +1,7 @@
-const {updateSkill, getAllSkills} = require('../controllers/skill.controller');
-const {Skill} = require('../models/skill.model');
+const {updateSkill, getAllSkills} = require('../../dist/controllers/skill.controller');
+const {Skill} = require('../../dist/models/skill.model');
 const httpMocks = require('node-mocks-http');
-const {app} = require('../app');
+const {app} = require('../../dist/app');
 const request = require('supertest');
 
 Skill.findOneAndUpdate = jest.fn();
