@@ -1,6 +1,6 @@
 const {Skill} = require('../models/skill.model');
 
-const addSkill = async (req, res) => {
+export const addSkill = async (req, res) => {
     try {
         const skillAdded = await Skill.create(req.body);
         res.status(200).json({
@@ -17,7 +17,7 @@ const addSkill = async (req, res) => {
     }
 };
 
-const findSkillByName = async (req, res) => {
+export const findSkillByName = async (req, res) => {
     try {
         const targetName = req.params.name;
         const skill = await Skill.find({
@@ -37,7 +37,7 @@ const findSkillByName = async (req, res) => {
     }
 };
 
-const updateSkill = async (req, res) => {
+export const updateSkill = async (req, res) => {
     try {
         const filter = {skillName: req.body.skillName};
         const update = {score: req.body.score};
@@ -59,7 +59,7 @@ const updateSkill = async (req, res) => {
     }
 };
 
-const getAllSkills = async (req, res) => {
+export const getAllSkills = async (req, res) => {
     try {
 
         const skills = await Skill.find();

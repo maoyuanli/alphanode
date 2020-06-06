@@ -1,7 +1,8 @@
-const express = require('express');
+import {Router} from "express";
+
 const {addSkill, findSkillByName, updateSkill, getAllSkills} = require('../controllers/skill.controller');
 
-const skillRouter = express.Router();
+const skillRouter = Router();
 
 skillRouter.route('/add')
     .post(addSkill);

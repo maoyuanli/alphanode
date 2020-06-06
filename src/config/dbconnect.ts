@@ -2,7 +2,7 @@ const config = require('./keys');
 const DB = config.mongoDBConnStr.replace('<PASSWORD>', config.mongoDBPassword);
 const mongoose = require('mongoose');
 
-const connectMongoose = () => {
+export const connectMongoose = () => {
     mongoose.connect(DB, {
         useNewUrlParser: true,
         useCreateIndex: true,

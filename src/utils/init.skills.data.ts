@@ -6,7 +6,7 @@ connectMongoose();
 
 const skills = JSON.parse(fs.readFileSync(`${__dirname}/preset-skills.json`, 'utf-8'));
 
-const initSkills = async () => {
+export const initSkills = async () => {
     try {
         Skill.deleteMany();
         for (let skill of skills) {
