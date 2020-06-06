@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const morgan = require('morgan');
 const {chatbotRouter} = require('./routers/chatbot.routers');
 const {skillRouter} = require('./routers/skill.routers');
