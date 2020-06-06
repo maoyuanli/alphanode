@@ -1,4 +1,6 @@
 module.exports = {
+    mongoDBConnStr: process.env.DATABASE,
+    mongoDBPassword: process.env.DB_PASS,
     gootleProjectID: process.env.GOOGLE_PROJECT_ID,
     dialogFlowSessionID: process.env.DIALOGFLOW_SESSION_ID,
     dialogFlowSessionLanguageCode: 'en-US',

@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config({path: './config.env'});
 const fs = require('fs');
 const {Skill} = require('../models/skill.model');
-
-const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DB_PASS);
+const {DB} = require('../config/dbconnect');
 
 mongoose.connect(DB, {
     useNewUrlParser: true,
