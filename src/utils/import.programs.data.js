@@ -1,15 +1,8 @@
-const mongoose = require('mongoose');
 const fs = require('fs');
 const {Program} = require('../models/program.model');
-const {DB} = require('../config/dbconnect');
+const {connectMongoose} = require('../config/dbconnect');
 
-mongoose.connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-}).then(con => {
-    console.log('db connected')
-});
+connectMongoose();
 
 const progs = JSON.parse(fs.readFileSync(`${__dirname}/preset-programs.json`, 'utf-8'));
 

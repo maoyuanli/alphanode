@@ -1,14 +1,7 @@
-const mongoose = require('mongoose');
 const {app} = require('./src/app');
-const {DB} = require('./src/config/dbconnect');
+const {connectMongoose} = require('./src/config/dbconnect');
 
-mongoose.connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-}).then(con => {
-    console.log('db connected')
-});
+connectMongoose();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

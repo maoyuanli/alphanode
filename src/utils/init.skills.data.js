@@ -1,15 +1,8 @@
-const mongoose = require('mongoose');
 const fs = require('fs');
 const {Skill} = require('../models/skill.model');
-const {DB} = require('../config/dbconnect');
+const {connectMongoose} = require('../config/dbconnect');
 
-mongoose.connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-}).then(con => {
-    console.log('db connected in skills data initialization')
-});
+connectMongoose();
 
 const skills = JSON.parse(fs.readFileSync(`${__dirname}/preset-skills.json`, 'utf-8'));
 
