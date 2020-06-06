@@ -1,5 +1,5 @@
-const {app} = require('./app');
-const {connectMongoose} = require('./config/dbconnect');
+const {app} = require('../app');
+const {connectMongoose} = require('./dbconnect');
 
 connectMongoose();
 
