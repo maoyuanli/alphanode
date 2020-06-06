@@ -10,7 +10,7 @@ const sessionClient = new dialogflow.SessionsClient({projectID, credentials});
 const sessionPath = sessionClient.sessionPath(config.gootleProjectID, config.dialogFlowSessionID);
 
 
-export const handleTextQuery = async (req, res) => {
+export const handleTextQuery = async (req:any, res:any) => {
     const request = {
         session: sessionPath,
         queryInput: {
@@ -26,7 +26,7 @@ export const handleTextQuery = async (req, res) => {
     res.send(responses[0].queryResult);
 };
 
-export const handleEventQuery = async (event, res) => {
+export const handleEventQuery = async (event:any, res:any) => {
     const request = {
         session: sessionPath,
         queryInput: {
