@@ -1,6 +1,7 @@
 import {Skill} from '../models/skill.model';
+import {Request, Response} from 'express';
 
-export const addSkill = async (req: any, res: any) => {
+export const addSkill = async (req: Request, res: Response) => {
     try {
         const skillAdded = await Skill.create(req.body);
         res.status(200).json({
@@ -17,7 +18,7 @@ export const addSkill = async (req: any, res: any) => {
     }
 };
 
-export const findSkillByName = async (req: any, res: any) => {
+export const findSkillByName = async (req: Request, res: Response) => {
     try {
         const targetName = req.params.name;
         const skill = await Skill.find({
@@ -37,7 +38,7 @@ export const findSkillByName = async (req: any, res: any) => {
     }
 };
 
-export const updateSkill = async (req: any, res: any) => {
+export const updateSkill = async (req: Request, res: Response) => {
     try {
         const filter = {skillName: req.body.skillName};
         const update = {score: req.body.score};
@@ -59,7 +60,7 @@ export const updateSkill = async (req: any, res: any) => {
     }
 };
 
-export const getAllSkills = async (req: any, res: any) => {
+export const getAllSkills = async (req: Request, res: Response) => {
     try {
 
         const skills = await Skill.find();
