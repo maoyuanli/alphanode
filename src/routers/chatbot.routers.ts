@@ -1,5 +1,5 @@
-const express = require('express');
-const {handleTextQuery} = require("../controllers/chatbot.controller");
+import express from 'express';
+import {handleTextQuery} from "../controllers/chatbot.controller";
 
 
 export const chatbotRouter = express.Router();

@@ -1,9 +1,14 @@
-const config = require('./keys');
-const DB = config.mongoDBConnStr.replace('<PASSWORD>', config.mongoDBPassword);
+import {provideConfig} from "./keys";
 import mongoose from 'mongoose';
 
+const dbString = provideConfig().mongoDBConnStr;
+const dbPass = provideConfig().mongoDBPassword;
+
+const fullDBString = dbString.replace('<PASSWORD>', dbPass);
+
+
 export const connectMongoose = () => {
-    mongoose.connect(DB, {
+    mongoose.connect(fullDBString, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,

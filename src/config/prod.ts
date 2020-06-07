@@ -1,4 +1,6 @@
-module.exports = {
+import {Config} from "./keys";
+
+export const prodConfig: Config = {
     mongoDBConnStr: process.env.DATABASE,
     mongoDBPassword: process.env.DB_PASS,
     gootleProjectID: process.env.GOOGLE_PROJECT_ID,

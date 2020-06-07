@@ -1,16 +1,16 @@
-const config = require('../config/keys');
+import {provideConfig} from "../config/keys";
 import dialogflow from 'dialogflow';
 
-const projectID = config.gootleProjectID;
+const projectID = provideConfig().gootleProjectID;
 const credentials = {
-    client_email: config.googleClientEmail,
-    private_key: config.googlePrivateKey
+    client_email: provideConfig().googleClientEmail,
+    private_key: provideConfig().googlePrivateKey
 };
 const sessionClient = new dialogflow.SessionsClient({projectID, credentials});
-const sessionPath = sessionClient.sessionPath(config.gootleProjectID, config.dialogFlowSessionID);
+const sessionPath = sessionClient.sessionPath(provideConfig().gootleProjectID, provideConfig().dialogFlowSessionID);
 
 
-export const handleTextQuery = async (req:any, res:any) => {
+export const handleTextQuery = async (req: any, res: any) => {
     const request = {
         session: sessionPath,
         queryInput: {
@@ -18,7 +18,7 @@ export const handleTextQuery = async (req:any, res:any) => {
                 // The query to send to the dialogflow agent
                 text: req.body.text,
                 // The language used by the client (en-US)
-                languageCode: config.dialogFlowSessionLanguageCode,
+                languageCode: provideConfig().dialogFlowSessionLanguageCode,
             },
         },
     };
@@ -26,7 +26,7 @@ export const handleTextQuery = async (req:any, res:any) => {
     res.send(responses[0].queryResult);
 };
 
-export const handleEventQuery = async (event:any, res:any) => {
+export const handleEventQuery = async (event: any, res: any) => {
     const request = {
         session: sessionPath,
         queryInput: {
@@ -34,7 +34,7 @@ export const handleEventQuery = async (event:any, res:any) => {
                 // The query to send to the dialogflow agent
                 name: event,
                 // The language used by the client (en-US)
-                languageCode: config.dialogFlowSessionLanguageCode,
+                languageCode: provideConfig().dialogFlowSessionLanguageCode,
             },
         },
     };
