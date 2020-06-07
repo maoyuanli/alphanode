@@ -5,6 +5,5 @@ export const skillSchema = new mongoose.Schema({
     score: {type: String, required: true}
 });
 
-const Skill = mongoose.model('Skill', skillSchema);
+export const Skill = mongoose.model('Skill', skillSchema);
 
-module.exports = {Skill};

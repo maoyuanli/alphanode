@@ -1,6 +1,6 @@
 const config = require('./keys');
 const DB = config.mongoDBConnStr.replace('<PASSWORD>', config.mongoDBPassword);
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 export const connectMongoose = () => {
     mongoose.connect(DB, {
@@ -12,5 +12,3 @@ export const connectMongoose = () => {
         console.log('db connected')
     });
 };
-
-module.exports = {DB, connectMongoose};

@@ -1,4 +1,4 @@
-const {Skill} = require('../models/skill.model');
+import {Skill} from '../models/skill.model';
 
 export const addSkill = async (req:any, res:any) => {
     try {
@@ -77,4 +77,3 @@ export const getAllSkills = async (req:any, res:any) => {
     }
 };
 
-module.exports = {addSkill, findSkillByName, updateSkill, getAllSkills};

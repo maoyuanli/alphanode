@@ -1,6 +1,6 @@
-const fs = require('fs');
-const {Skill} = require('../models/skill.model');
-const {connectMongoose} = require('../config/dbconnect');
+import fs from 'fs';
+import {Skill} from '../models/skill.model';
+import {connectMongoose} from '../config/dbconnect';
 
 connectMongoose();
 
@@ -28,5 +28,4 @@ initSkills().then(r => {
     console.log('skills initialized');
 });
 
-module.exports = {initSkills};
 

@@ -1,5 +1,5 @@
 const config = require('../config/keys');
-const dialogflow = require('dialogflow');
+import dialogflow from 'dialogflow';
 
 const projectID = config.gootleProjectID;
 const credentials = {

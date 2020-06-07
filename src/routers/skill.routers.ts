@@ -2,7 +2,7 @@ import {Router} from "express";
 
 const {addSkill, findSkillByName, updateSkill, getAllSkills} = require('../controllers/skill.controller');
 
-const skillRouter = Router();
+export const skillRouter = Router();
 
 skillRouter.route('/add')
     .post(addSkill);
@@ -16,4 +16,3 @@ skillRouter.route('/update')
 skillRouter.route('/getall')
     .get(getAllSkills);
 
-module.exports = {skillRouter};

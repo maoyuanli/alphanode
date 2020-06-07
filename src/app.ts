@@ -1,10 +1,10 @@
 import express from 'express';
-const morgan = require('morgan');
-const {chatbotRouter} = require('./routers/chatbot.routers');
-const {skillRouter} = require('./routers/skill.routers');
-const {initSkills} = require('./utils/init.skills.data');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+import morgan from 'morgan';
+import {chatbotRouter} from './routers/chatbot.routers';
+import {skillRouter} from './routers/skill.routers';
+import {initSkills} from './utils/init.skills.data';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
 
 export const app = express();
@@ -20,4 +20,3 @@ app.use('/api/skill', skillRouter);
 
 initSkills();
 
-module.exports = {app};
