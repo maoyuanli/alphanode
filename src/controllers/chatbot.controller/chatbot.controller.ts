@@ -1,4 +1,4 @@
-import {provideConfig} from "../config/keys";
+import {provideConfig} from "../../config/keys";
 import {Request, Response} from "express";
 import dialogflow from 'dialogflow';
 
@@ -35,8 +35,16 @@ export const handleEventQuery = async (event: any, res: Response) => {
             },
         },
     };
-    const responses = await sessionClient.detectIntent(request);
-    res.send(responses[0].queryResult);
+    try{
+        const responses = await sessionClient.detectIntent(request);
+        res.send(responses[0].queryResult);
+    }catch (err) {
+        res.status(400).json({
+            status: 'something wrong with chatbot',
+            message: err
+        })
+    }
+
 };
 
 module.exports = {handleTextQuery, handleEventQuery};

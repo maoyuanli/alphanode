@@ -1,6 +1,6 @@
 import {updateSkill} from "./skill.controller";
-import {Skill} from "../models/skill.model";
-import {app} from "../app";
+import {Skill} from "../../models/skill.model";
+import {app} from "../../app";
 import request from 'supertest';
 import {createRequest, createResponse} from "node-mocks-http";
 

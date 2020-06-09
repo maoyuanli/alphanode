@@ -1,4 +1,4 @@
-import {Skill} from '../models/skill.model';
+import {Skill} from '../../models/skill.model';
 import {Request, Response} from 'express';
 
 export const addSkill = async (req: Request, res: Response) => {
@@ -62,7 +62,8 @@ export const updateSkill = async (req: Request, res: Response) => {
 
 export const getAllSkills = async (req: Request, res: Response) => {
     try {
-        const skills = await Skill.find();
+        const skills = await Skill.find()
+            .select('-_id -__v');
         res.status(200).json({
             status: 'success',
             data: {
