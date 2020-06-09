@@ -2,9 +2,10 @@ import express, {Application} from 'express';
 import morgan from 'morgan';
 import {chatbotRouter} from './routers/chatbot.routers';
 import {skillRouter} from './routers/skill.routers';
-import {initSkills} from './utils/init.skills.data';
+import {bindSkillExp, initExps, initSkills} from './utils/init.skills.data';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import {expRouter} from "./routers/experience.routers";
 
 
 export const app: Application = express();
@@ -17,6 +18,8 @@ if (process.env.NODE_ENV === 'development') {
 app.options('*', cors());
 app.use('/api/chatbot', chatbotRouter);
 app.use('/api/skill', skillRouter);
+app.use('/api/exp', expRouter);
 
-initSkills();
+initSkills().then(r => initExps()).then(r => bindSkillExp());
+
 

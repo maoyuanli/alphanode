@@ -13,7 +13,5 @@ export const connectMongoose = () => {
         useCreateIndex: true,
         useFindAndModify: false,
         useUnifiedTopology: true
-    }).then(() => {
-        console.log('db connected')
-    });
+    })
 };

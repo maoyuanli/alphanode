@@ -62,7 +62,6 @@ export const updateSkill = async (req: Request, res: Response) => {
 
 export const getAllSkills = async (req: Request, res: Response) => {
     try {
-
         const skills = await Skill.find();
         res.status(200).json({
             status: 'success',
