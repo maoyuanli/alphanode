@@ -23,3 +23,31 @@ export const userRegister = async (req: Request, res: Response) => {
         })
     }
 };
+
+export const userLogin = async (req: Request, res: Response) => {
+    try {
+        const username: string = req.body.username;
+        const user = await User.findOne({username: username});
+        if (!user) {
+            res.status(400)
+                .json({status: 'failed', message: 'invalide username or password'})
+        }
+        // @ts-ignore
+        const validPassword = await bcrypt.compare(req.body.password, user.password);
+        if (!validPassword) {
+            res.status(400)
+                .json({status: 'failed',message: 'invalide username or password'})
+        }
+        res.status(200).json({
+            status: 'login succeeded',
+            data: {
+                user: username
+            }
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: 'operation failed',
+            message: err
+        })
+    }
+};
