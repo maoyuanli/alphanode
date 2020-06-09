@@ -35,10 +35,10 @@ export const handleEventQuery = async (event: any, res: Response) => {
             },
         },
     };
-    try{
+    try {
         const responses = await sessionClient.detectIntent(request);
         res.send(responses[0].queryResult);
-    }catch (err) {
+    } catch (err) {
         res.status(400).json({
             status: 'something wrong with chatbot',
             message: err

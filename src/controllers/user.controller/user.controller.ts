@@ -1,6 +1,8 @@
 import {User} from "../../models/user.model";
 import {Request, Response} from "express";
 import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken';
+import {provideConfig} from '../../config/keys';
 
 export const userRegister = async (req: Request, res: Response) => {
     try {
@@ -36,12 +38,15 @@ export const userLogin = async (req: Request, res: Response) => {
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (!validPassword) {
             res.status(400)
-                .json({status: 'failed',message: 'invalide username or password'})
+                .json({status: 'failed', message: 'invalide username or password'})
         }
+        // @ts-ignore
+        const token = jwt.sign({_id: user._id}, provideConfig().jwtPrivateToken);
         res.status(200).json({
             status: 'login succeeded',
             data: {
-                user: username
+                user: username,
+                node_jwt_token: 'Bearer ' + token
             }
         })
     } catch (err) {

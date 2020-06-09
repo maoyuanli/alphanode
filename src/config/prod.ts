@@ -1,6 +1,7 @@
 import {Config} from "./keys";
 
 export const prodConfig: Config = {
+    jwtPrivateToken: process.env.JWT_PRIVATE_TOKEN,
     mongoDBConnStr: process.env.DATABASE,
     mongoDBPassword: process.env.DB_PASS,
     gootleProjectID: process.env.GOOGLE_PROJECT_ID,
