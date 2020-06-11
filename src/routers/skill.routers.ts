@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {addSkill, findSkillByName, getAllSkills, updateSkill} from '../controllers/skill.controller/skill.controller';
+import {addSkill, findSkillByName, getAllSkills, updateSkill} from '../controllers/skill/skill.controller';
 
 export const skillRouter = Router();
 

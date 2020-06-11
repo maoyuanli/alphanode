@@ -8,6 +8,7 @@ import bodyParser from 'body-parser';
 import {expRouter} from "./routers/experience.routers";
 import {userRouter} from "./routers/user.routers";
 import {covid19Router} from "./routers/covid19.routers";
+import {feedbackRouter} from "./routers/feedback.routers";
 
 
 export const app: Application = express();
@@ -23,6 +24,7 @@ app.use('/api/skill', skillRouter);
 app.use('/api/exp', expRouter);
 app.use('/api/user', userRouter);
 app.use('/api/covid19', covid19Router);
+app.use('/api/feedback', feedbackRouter);
 
 initSkills().then(r => initExps()).then(r => bindSkillExp());
 
