@@ -1,6 +1,10 @@
 import {Config} from "./keys";
 
 export const prodConfig: Config = {
+    TwitterConsumerKey: process.env.TWITTER_CONSUMER_KEY,
+    TwitterConsumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    TwitterAccessTokenKey: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    TwitterAccessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     quandlKey: process.env.QUANDL_KEY,
     newsApiKey: process.env.NEWS_API_KEY,
     jwtPrivateToken: process.env.JWT_PRIVATE_TOKEN,

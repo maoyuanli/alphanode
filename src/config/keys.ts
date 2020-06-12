@@ -10,6 +10,10 @@ export const provideConfig = (): Config => {
 };
 
 export interface Config {
+    TwitterConsumerKey: any,
+    TwitterConsumerSecret: any,
+    TwitterAccessTokenKey: any,
+    TwitterAccessTokenSecret: any,
     quandlKey: any,
     newsApiKey: any,
     jwtPrivateToken: any
