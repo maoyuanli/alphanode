@@ -5,10 +5,10 @@ export const orderSchema: Schema = new mongoose.Schema({
     orderType: {type: String},
     orderPrice: {type: String},
     orderVolumn: {type: String},
-    users: [{
+    user: {
         type: Schema.Types.ObjectId,
         ref: "User"
-    }]
+    }
 });
 
 export const Order = mongoose.model('Order', orderSchema);
