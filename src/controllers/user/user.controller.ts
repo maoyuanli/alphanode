@@ -44,10 +44,8 @@ export const userLogin = async (req: Request, res: Response) => {
         const token = jwt.sign({_id: user._id}, provideConfig().jwtPrivateToken);
         res.status(200).json({
             status: 'login succeeded',
-            data: {
-                user: username,
-                node_jwt_token: 'Bearer ' + token
-            }
+            user: username,
+            token: 'Bearer ' + token
         })
     } catch (err) {
         res.status(400).json({

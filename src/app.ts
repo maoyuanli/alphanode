@@ -25,7 +25,7 @@ app.options('*', cors());
 app.use('/api/chatbot', chatbotRouter);
 app.use('/api/skill', skillRouter);
 app.use('/api/exp', expRouter);
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 app.use('/api/covid19', covid19Router);
 app.use('/api/feedback', feedbackRouter);
 app.use('/api/topnews', topNewsRouter);
