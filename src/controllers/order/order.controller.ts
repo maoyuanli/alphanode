@@ -26,5 +26,20 @@ export const setOrder = async (req: Request, res: Response) => {
 
 
 export const getOrder = async (req: Request, res: Response) => {
-
+    try {
+    // @ts-ignore
+    const userID = req.user._id;
+    const orders = await Order.find({'user': userID});
+        res.status(200).json({
+            status: 'success',
+            data: {
+                orders
+            }
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: 'not found',
+            message: err
+        })
+    }
 };

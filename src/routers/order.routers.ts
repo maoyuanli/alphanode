@@ -5,3 +5,7 @@ import {auth} from "../utils/auth";
 export const setOrderRouter = Router();
 
 setOrderRouter.route('/').post(auth, setOrder);
+
+export const getOrderRouter = Router();
+
+getOrderRouter.route('/').get(auth, getOrder);

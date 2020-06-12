@@ -12,7 +12,7 @@ import {feedbackRouter} from "./routers/feedback.routers";
 import {searchNewsRouter, topNewsRouter} from "./routers/news.routers";
 import {stockquoteRouter} from "./routers/stockquote.routers";
 import {tweetsRouter} from "./routers/tweets.routers";
-import {setOrderRouter} from "./routers/order.routers";
+import {getOrderRouter, setOrderRouter} from "./routers/order.routers";
 
 
 export const app: Application = express();
@@ -34,6 +34,7 @@ app.use('/api/searchnews', searchNewsRouter);
 app.use('/api/quote', stockquoteRouter);
 app.use('/api/tweet', tweetsRouter);
 app.use('/api/setorder',setOrderRouter);
+app.use('/api/getorder', getOrderRouter);
 
 initSkills().then(r => initExps()).then(r => bindSkillExp());
 
