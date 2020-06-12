@@ -13,7 +13,7 @@ export const setOrder = async (req: Request, res: Response) => {
             user: req.user._id
         });
         res.status(200).json({
-            status:'success',
+            status: 'success',
             order: order
         })
     } catch (err) {
@@ -27,15 +27,29 @@ export const setOrder = async (req: Request, res: Response) => {
 
 export const getOrder = async (req: Request, res: Response) => {
     try {
-    // @ts-ignore
-    const userID = req.user._id;
-    const orders = await Order.find({'user': userID});
+        // @ts-ignore
+        const userID = req.user._id;
+        const orders = await Order.find({'user': userID});
+        const formattedOrders = orders.map(order =>
+            ({
+                id: order._id,
+                // @ts-ignore
+                ticker: order.ticker,
+                // @ts-ignore
+                orderType: order.orderType,
+                // @ts-ignore
+                orderPrice: order.orderPrice,
+                // @ts-ignore
+                orderVolumn: order.orderVolumn,
+                // @ts-ignore
+                createdAt: order.createdAt,
+
+            })
+        );
         res.status(200).json({
-            status: 'success',
-            data: {
-                orders
-            }
+            orders: formattedOrders
         });
+
     } catch (err) {
         res.status(400).json({
             status: 'not found',

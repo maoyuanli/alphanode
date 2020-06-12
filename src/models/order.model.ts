@@ -5,6 +5,7 @@ export const orderSchema: Schema = new mongoose.Schema({
     orderType: {type: String},
     orderPrice: {type: String},
     orderVolumn: {type: String},
+    createdAt: {type: Date, default: Date.now},
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"

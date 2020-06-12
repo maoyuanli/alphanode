@@ -33,7 +33,7 @@ app.use('/api/topnews', topNewsRouter);
 app.use('/api/searchnews', searchNewsRouter);
 app.use('/api/quote', stockquoteRouter);
 app.use('/api/tweet', tweetsRouter);
-app.use('/api/setorder',setOrderRouter);
+app.use('/api/setorder', setOrderRouter);
 app.use('/api/getorder', getOrderRouter);
 
 initSkills().then(r => initExps()).then(r => bindSkillExp());
