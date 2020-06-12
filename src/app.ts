@@ -9,6 +9,7 @@ import {expRouter} from "./routers/experience.routers";
 import {userRouter} from "./routers/user.routers";
 import {covid19Router} from "./routers/covid19.routers";
 import {feedbackRouter} from "./routers/feedback.routers";
+import {searchNewsRouter, topNewsRouter} from "./routers/news.routers";
 
 
 export const app: Application = express();
@@ -25,6 +26,8 @@ app.use('/api/exp', expRouter);
 app.use('/api/user', userRouter);
 app.use('/api/covid19', covid19Router);
 app.use('/api/feedback', feedbackRouter);
+app.use('/api/topnews', topNewsRouter);
+app.use('/api/searchnews', searchNewsRouter);
 
 initSkills().then(r => initExps()).then(r => bindSkillExp());
 

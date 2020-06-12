@@ -10,6 +10,7 @@ export const provideConfig = (): Config => {
 };
 
 export interface Config {
+    newsApiKey: any,
     jwtPrivateToken: any
     mongoDBConnStr: any,
     mongoDBPassword: any,
