@@ -1,6 +1,7 @@
 import {Config} from "./keys";
 
 export const prodConfig: Config = {
+    quandlKey: process.env.QUANDL_KEY,
     newsApiKey: process.env.NEWS_API_KEY,
     jwtPrivateToken: process.env.JWT_PRIVATE_TOKEN,
     mongoDBConnStr: process.env.DATABASE,

@@ -9,7 +9,6 @@ export const provideTopNews = async (req: Request, res: Response) => {
         `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${newsApiKey}`;
     try {
         const response = await axios.get(url);
-        console.log(response);
         res.status(200).send(response.data)
     } catch (e) {
         console.log(e)

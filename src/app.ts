@@ -10,6 +10,7 @@ import {userRouter} from "./routers/user.routers";
 import {covid19Router} from "./routers/covid19.routers";
 import {feedbackRouter} from "./routers/feedback.routers";
 import {searchNewsRouter, topNewsRouter} from "./routers/news.routers";
+import {stockquoteRouter} from "./routers/stockquote.routers";
 
 
 export const app: Application = express();
@@ -28,6 +29,7 @@ app.use('/api/covid19', covid19Router);
 app.use('/api/feedback', feedbackRouter);
 app.use('/api/topnews', topNewsRouter);
 app.use('/api/searchnews', searchNewsRouter);
+app.use('/api/quote', stockquoteRouter);
 
 initSkills().then(r => initExps()).then(r => bindSkillExp());
 
