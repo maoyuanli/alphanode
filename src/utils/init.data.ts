@@ -2,6 +2,9 @@ import fs from 'fs';
 import {Skill, SkillModel} from '../models/skill.model';
 import {connectMongoose} from '../config/dbconnect';
 import {Experience, ExperienceModel} from "../models/experience.model";
+import bcrypt from "bcrypt";
+import {User} from "../models/user.model";
+import {Order, OrderModel} from "../models/order.model";
 
 connectMongoose();
 
@@ -62,5 +65,37 @@ export const bindSkillExp = async () => {
                 )
             }
         }
+    }
+};
+
+export const initUser = async () => {
+    try {
+        // @ts-ignore
+        await User.deleteMany();
+        const user: string = 'user@abc.com';
+        const pass: string = 'password';
+        const salt = await bcrypt.genSalt(10);
+        const password = await bcrypt.hash(pass, salt);
+        const userRegistered = await User.create({
+            username: user, password
+        });
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+const orders: OrderModel[] = JSON.parse(fs.readFileSync(`${__dirname}/preset-orders.json`, 'utf-8'));
+
+export const initOrders = async () => {
+    try {
+        // @ts-ignore
+        await Order.deleteMany();
+        const user = await User.findOne({'username': 'user@abc.com'});
+        for (let order of orders) {
+            // @ts-ignore
+            await Order.create({...order, user: user._id})
+        }
+    } catch (e) {
+        console.log(e);
     }
 };

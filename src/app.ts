@@ -2,7 +2,7 @@ import express, {Application} from 'express';
 import morgan from 'morgan';
 import {chatbotRouter} from './routers/chatbot.routers';
 import {skillRouter} from './routers/skill.routers';
-import {bindSkillExp, initExps, initSkills} from './utils/init.data';
+import {bindSkillExp, initExps, initOrders, initSkills, initUser} from './utils/init.data';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import {expRouter} from "./routers/experience.routers";
@@ -36,6 +36,6 @@ app.use('/api/tweet', tweetsRouter);
 app.use('/api/setorder', setOrderRouter);
 app.use('/api/getorder', getOrderRouter);
 
-initSkills().then(r => initExps()).then(r => bindSkillExp());
+initSkills().then(r => initExps()).then(r => bindSkillExp()).then(r => initUser()).then(r => initOrders());
 
 

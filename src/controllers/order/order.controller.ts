@@ -42,7 +42,7 @@ export const getOrder = async (req: Request, res: Response) => {
                 // @ts-ignore
                 orderVolumn: order.orderVolumn,
                 // @ts-ignore
-                createdAt: order.createdAt,
+                createdDate: order.createdDate,
 
             })
         );

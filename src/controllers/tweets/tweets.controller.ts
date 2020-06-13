@@ -16,18 +16,17 @@ export const provideTweets = async (req: Request, res: Response) => {
         for (let name of screenNames) {
             const tweetRes = await client.get('statuses/user_timeline', {
                 screen_name: name,
-                count: 3,
+                count: 5,
             });
             const simplifiedTweetRes = tweetRes.map(originRes => {
-                const simplifiedRes = {
+                return {
                     id: originRes.id,
                     text: originRes.text,
                     user: {
                         screenName: originRes.user.screen_name,
                         profileImageUrlHttps: originRes.user.profile_image_url
                     }
-                }
-                return simplifiedRes;
+                };
             });
             tweetsArray.push(...simplifiedTweetRes);
         }

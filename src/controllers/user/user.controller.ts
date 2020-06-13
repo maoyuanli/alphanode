@@ -43,8 +43,7 @@ export const userLogin = async (req: Request, res: Response) => {
         // @ts-ignore
         const token = jwt.sign({_id: user._id}, provideConfig().jwtPrivateToken);
         res.status(200).json({
-            status: 'login succeeded',
-            user: username,
+            success: true,
             token: 'Bearer ' + token
         })
     } catch (err) {

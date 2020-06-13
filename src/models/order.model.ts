@@ -5,7 +5,7 @@ export const orderSchema: Schema = new mongoose.Schema({
     orderType: {type: String},
     orderPrice: {type: String},
     orderVolumn: {type: String},
-    createdAt: {type: Date, default: Date.now},
+    createdDate: {type: Date, default: Date.now},
     user: {
         type: Schema.Types.ObjectId,
         ref: "User"
@@ -13,3 +13,10 @@ export const orderSchema: Schema = new mongoose.Schema({
 });
 
 export const Order = mongoose.model('Order', orderSchema);
+
+export interface OrderModel {
+    ticker: string;
+    orderType: string;
+    orderPrice: string;
+    orderVolumn: string;
+}

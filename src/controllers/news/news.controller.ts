@@ -17,7 +17,7 @@ export const provideTopNews = async (req: Request, res: Response) => {
 
 export const searchNews = async (req: Request, res: Response) => {
     const url: string =
-        `https://newsapi.org/v2/everything?q=${req.params.q}&apiKey=${newsApiKey}`;
+        `https://newsapi.org/v2/everything?q=${req.query.q}&apiKey=${newsApiKey}`;
     try {
         const response = await axios.get(url);
         res.status(200).send(response.data)
