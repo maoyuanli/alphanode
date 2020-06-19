@@ -31,7 +31,7 @@ export const provideTweets = async (req: Request, res: Response) => {
             tweetsArray.push(...simplifiedTweetRes);
         }
         // @ts-ignore
-        tweetsArray.sort(((a, b) => a.id - b.id));
+        tweetsArray.sort(() => Math.random() - 0.5);
         res.status(200).json({
             tweets: tweetsArray
         })
